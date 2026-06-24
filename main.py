@@ -22,7 +22,7 @@ class PredictRequest(BaseModel):
 
 @app.get("/")
 def read_root():
-    return {"message": "ML training API is running"}
+    return {"message": "ML training API is running on hardcoded port 8000"}
 
 @app.post("/train")
 def train_model(params: TrainParams = TrainParams()):
