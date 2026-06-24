@@ -1,6 +1,7 @@
 import os
 import joblib
 import numpy as np
+import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from sklearn.datasets import load_iris
@@ -70,3 +71,6 @@ def predict(request: PredictRequest):
     pred = int(model.predict(features)[0])
     class_names = load_iris().target_names
     return {"prediction": pred, "class_name": class_names[pred]}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
